@@ -1,7 +1,5 @@
-# Use the latest Arch Linux image
 FROM debian:latest 
 
-# Set the user and home directory variables
 ARG USER=snenv
 ARG HOME_DIR=/home/${USER}
 
@@ -9,7 +7,6 @@ RUN useradd -m -d ${HOME_DIR} ${USER}
 ENV HOME ${HOME_DIR} 
 WORKDIR ${HOME_DIR}
 
-# Update the system and install software as root
 RUN apt-get update \
     && apt-get install -y \
       curl \ 
