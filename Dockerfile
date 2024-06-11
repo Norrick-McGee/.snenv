@@ -19,7 +19,10 @@ RUN apt-get update \
       zsh-syntax-highlighting \
       zsh-autosuggestions \
       fzf \
-      neovim
+      neovim \
+      man \ 
+      most
+
 # change $USER's shell
 RUN chsh -s /usr/bin/zsh ${USER}
 
@@ -32,4 +35,10 @@ RUN /bin/bash -c "source $HOME/.cargo/env \
 RUN git clone https://github.com/Norrick-McGee/.dotfiles.git $HOME/.dotfiles
 RUN ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc
 
+ENV PAGER=most
+USER root
+RUN echo "${USER} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+
+
+USER ${USER}
 CMD /usr/bin/zsh

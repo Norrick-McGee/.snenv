@@ -1,0 +1,12 @@
+#!/bin/bash
+
+mkdir -p $HOME/.config
+curl https://sh.rustup.rs -sSf | sh -s -- -y
+/bin/bash -c "source $HOME/.cargo/env \
+    && cargo install exa bat starship bob-nvim \
+    && bob install 0.9.5"
+
+git clone https://github.com/Norrick-McGee/.dotfiles.git $HOME/.dotfiles
+ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc
+
+

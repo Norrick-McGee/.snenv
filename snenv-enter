@@ -1,0 +1,10 @@
+#!/bin/bash
+
+podman run -it \
+       -v /home/snorks/:/home/snenv/hosthome/:Z,dev \
+       -v /home/snorks/.ssh/:/home/snenv/.ssh/:Z,dev \
+       -v /mnt/vault/:/mnt/vault/:Z,dev \
+       -v /home/snorks/.snenv/snenv-home/:/home/snenv/:Z,dev \
+       --userns=keep-id \
+       --hostname=snenv \
+       snenv
